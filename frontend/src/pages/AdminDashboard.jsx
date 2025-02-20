@@ -5,7 +5,7 @@ const AdminDashboard = () => {
     return (
         <Box p="6">
             <Heading mb="6">Admin Dashboard</Heading>
-            <Link to="/admin/add-instructor">
+            <Link to="/instructor">
                 <Button colorScheme="blue" mr="4">Add Instructor</Button>
             </Link>
             <Link to="/admin/add-course">

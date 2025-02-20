@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Input, Button, Heading } from "@chakra-ui/react";
-import { addInstructor } from "../redux/actions/instructorActions";
+import { addInstructor } from "../redux/actions/adminActions";
 
 const AddInstructor = () => {
   const dispatch = useDispatch();

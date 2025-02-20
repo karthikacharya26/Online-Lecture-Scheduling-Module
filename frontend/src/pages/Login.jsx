@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
@@ -13,20 +13,21 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login(email, password, navigate));
+        dispatch(login(email, password));
     };
 
-
-
-    if (userInfo) {
-        navigate(userInfo.role === 'admin' ? '/admin' : '/instructor');
-    }
+    // Use useEffect to navigate after state updates
+    useEffect(() => {
+        if (userInfo) {
+            navigate(userInfo.role === 'admin' ? '/admin' : '/instructor');
+        }
+    }, [userInfo, navigate]);
 
     return (
         <Box maxW="400px" mx="auto" mt="10" p="6" border="1px solid #ccc" borderRadius="8px">
             <Heading mb="4">Login</Heading>
             {error && <Text color="red.500" mb="4">{error}</Text>}
-            <Box mb="4">
+            <Box mb="4"> 
                 <Text>Email</Text>
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </Box>

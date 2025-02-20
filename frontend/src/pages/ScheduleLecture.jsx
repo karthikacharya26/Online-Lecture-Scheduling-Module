@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Select, Input, Button, Heading } from "@chakra-ui/react";
-import { fetchCourses } from "../redux/actions/courseActions";
-import { fetchInstructors } from "../redux/actions/instructorActions";
-import { scheduleLecture } from "../redux/actions/lectureActions";
+import { fetchInstructorLectures } from "../redux/actions/instructorActions";
+import { fetchInstructors } from "../redux/actions/adminActions";
+import { scheduleLecture } from "../redux/actions/adminActions";
 
 const ScheduleLecture = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const ScheduleLecture = () => {
   });
 
   useEffect(() => {
-    dispatch(fetchCourses());
+    dispatch(fetchInstructorLectures());
     dispatch(fetchInstructors());
   }, [dispatch]);
 
